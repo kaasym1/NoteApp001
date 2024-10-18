@@ -18,7 +18,7 @@ class App: Application() {
         getInstance()
     }
 
-    private fun getInstance(): AppDataBase? {
+    internal fun getInstance(): AppDataBase? {
         if (appDataBase == null) {
             appDataBase = applicationContext?.let { context ->
                 Room.databaseBuilder(

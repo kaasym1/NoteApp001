@@ -1,47 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="12dp"
-    android:background="@drawable/bg_item"
-    android:layout_height="100dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:background="@drawable/bg_item_note"
+    android:orientation="vertical"
+    android:paddingStart="20dp"
+    android:padding="12dp">
 
     <TextView
-        android:id="@+id/txt_name"
-        android:layout_width="370dp"
-        android:layout_height="22dp"
-        android:text="План на жизнь:"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="12dp"/>
-
-    <TextView
-        android:id="@+id/txt_about"
-        android:layout_width="370dp"
-        android:layout_height="20dp"
-        android:textSize="16dp"
-        android:text="Посадить сына, вырастить дом, построить дерево. Нужно..."
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_name"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        />
-
-    <TextView
-        android:id="@+id/tvData"
+        android:id="@+id/item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="30 мая 17:21"
-        android:textColor="#434343"
-        app:layout_constraintStart_toStartOf="@id/txt_name"
-        app:layout_constraintTop_toBottomOf="@id/txt_about"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"/>
+        android:ellipsize="end"
+        android:letterSpacing="0.1"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/title" />
 
+    <TextView
+        android:id="@+id/item_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:letterSpacing="0.1"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_title"
+        tools:text="@string/description" />
 
+    <TextView
+        android:id="@+id/item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="@color/gray1"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@id/item_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/data" />
+
+    <TextView
+        android:id="@+id/item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:textColor="@color/gray1"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_date"
+        tools:text="@string/time" />
 </androidx.constraintlayout.widget.ConstraintLayout>

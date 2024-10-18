@@ -10,9 +10,9 @@ import com.example.noteapp.data.model.NoteModel
 @Dao
 interface NoteDao {
 
+    @Query ("SELECT * FROM noteModel")
+    fun getAll(): LiveData<List<NoteModel>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNote(noteModel: NoteModel)
-
-    @Query("SELECT * FROM noteModel")
-    fun getAll(): LiveData<List<NoteModel>>
 }
