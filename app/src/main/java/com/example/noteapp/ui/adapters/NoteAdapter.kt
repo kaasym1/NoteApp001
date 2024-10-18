@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp.R
 import com.example.noteapp.data.model.NoteModel
 import com.example.noteapp.databinding.ItemNoteBinding
+import com.example.noteapp.ui.intetface.OnClickItem
 
-class NoteAdapter : ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffCallback()) {
+class NoteAdapter(private val onLongClick: OnClickItem) :
+    ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffCallback()) {
     class ViewHolder(private val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: NoteModel) {
             binding.itemTitle.text = item.title
@@ -34,6 +36,7 @@ class NoteAdapter : ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffCallback(
                     date = R.color.beige
                     time = R.color.beige
                 }
+
                 "red" -> {
                     background = R.drawable.bg_item_red
                     title = R.color.orange
@@ -41,6 +44,7 @@ class NoteAdapter : ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffCallback(
                     date = R.color.orange
                     time = R.color.orange
                 }
+
                 else -> {
                     background = R.drawable.bg_item_black
                     title = R.color.white
@@ -65,6 +69,11 @@ class NoteAdapter : ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffCallback(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
+
+        holder.itemView.setOnLongClickListener {
+            onLongClick.onLongClick(getItem(position))
+            true
+        }
     }
 
     class DiffCallback : DiffUtil.ItemCallback<NoteModel>() {
